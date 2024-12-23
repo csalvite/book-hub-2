@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
             </p>
             <div className='flex flex-col sm:flex-row gap-4'>
               <Link
-                to='/register'
+                to='/business-register'
                 className='inline-block bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors text-center'
               >
                 Add Your Business!
@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
           </div>
           <div className='mt-12 lg:mt-0 grid grid-cols-1 gap-6'>
             <div className='bg-blue-800 p-6 rounded-lg'>
-              <i className='fa-solid fa-calendar-days w-8 h-8 mb-3'></i>
+              <i className='fa-solid fa-calendar-days text-2xl mb-3'></i>
               <h3 className='font-semibold mb-2'>Smart Scheduling</h3>
               <p className='text-blue-100'>
                 Effortlessly manage your bookings with our intuitive calendar
@@ -39,14 +39,14 @@ const Hero: React.FC = () => {
               </p>
             </div>
             <div className='bg-blue-800 p-6 rounded-lg'>
-              <i className='fa-solid fa-users w-8 h-8 mb-3'></i>
+              <i className='fa-solid fa-users text-2xl mb-3'></i>
               <h3 className='font-semibold mb-2'>Customer Management</h3>
               <p className='text-blue-100'>
                 Build lasting relationships with detailed customer profiles
               </p>
             </div>
             <div className='bg-blue-800 p-6 rounded-lg'>
-              <i className='fa-solid fa-arrow-trend-up w-8 h-8 mb-3'></i>
+              <i className='fa-solid fa-arrow-trend-up text-2xl mb-3'></i>
               <h3 className='font-semibold mb-2'>Business Analytics</h3>
               <p className='text-blue-100'>
                 Make data-driven decisions with comprehensive insights

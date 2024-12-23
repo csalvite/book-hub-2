@@ -3,6 +3,7 @@ import App from './home/App';
 import Login from './auth/users/Login';
 import Register from './auth/users/Register';
 import ForBusiness from './auth/business/ForBusiness';
+import BusinessRegister from './auth/business/BusinessRegister';
 
 function BookHubRoutes() {
   return (
@@ -17,6 +18,7 @@ function BookHubRoutes() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/for-businesses' element={<ForBusiness />} />
+        <Route path='/business-register' element={<BusinessRegister />} />
         <Route path='/about' element={<div>About Us Page</div>} />
         <Route path='/contact' element={<div>Contact Page</div>} />
       </Routes>
