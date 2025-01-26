@@ -1,21 +1,24 @@
 import { useState } from 'react';
 import { BusinessFormData } from '../types/business';
+import { createBusiness } from '../api/business';
 
 const initialFormData: BusinessFormData = {
   businessInfo: {
+    ownerName: '',
     name: '',
-    type: '',
+    type: 0,
     description: '',
-  },
-  contact: {
     email: '',
-    phone: '',
-    website: '',
+    password: '',
   },
   address: {
+    phone: '',
     street: '',
     city: '',
     state: '',
+    country: 'España',
+    latitude: 0,
+    longitude: 0,
     zipCode: '',
   },
   services: [],
@@ -42,6 +45,17 @@ export const useBusinessRegister = () => {
     }
   };
 
+  const submitForm = async () => {
+    console.log('Formulario enviado:', formData);
+
+    // Aquí iría la lógica para enviar el formulario a un servidor
+    const response = await createBusiness(formData);
+    console.log('Respuesta del servidor:', response);
+    if (!response) {
+      throw new Error('Error al enviar el formulario');
+    }
+  };
+
   const goToPreviousStep = () => {
     if (currentStep > 1) {
       setCurrentStep((prev) => prev - 1);
@@ -58,5 +72,6 @@ export const useBusinessRegister = () => {
     goToNextStep,
     goToPreviousStep,
     updateFormData,
+    submitForm,
   };
 };

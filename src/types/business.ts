@@ -1,21 +1,25 @@
 export interface BusinessFormData {
   businessInfo: {
+    ownerName: string;
     name: string;
     type: number;
     description: string;
-  };
-  contact: {
     email: string;
-    phone: string;
-    website: string;
+    password: string;
   };
   address: {
+    phone: string;
     street: string;
     city: string;
     state: string;
+    country: string;
+    latitude: number;
+    longitude: number;
     zipCode: string;
   };
   services: Array<{
+    description: string | null;
+    id: number | null;
     name: string;
     price: number;
     duration: number;
@@ -37,6 +41,11 @@ export interface BusinessFormData {
     routingNumber: string;
   };
   terms: boolean;
+}
+
+export interface IdName {
+  id: number;
+  name: string;
 }
 
 // {

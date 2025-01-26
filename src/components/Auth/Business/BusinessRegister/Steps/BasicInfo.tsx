@@ -1,5 +1,5 @@
 import React from 'react';
-import { BusinessFormData } from '../../../../../types/business';
+import { BusinessFormData, IdName } from '../../../../../types/business';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -11,13 +11,8 @@ interface BasicInfoProps {
   updateFormData: (data: Partial<BusinessFormData>) => void;
 }
 
-interface BusinessType {
-  id: number;
-  name: string;
-}
-
 const BasicInfo: React.FC<BasicInfoProps> = ({ formData, updateFormData }) => {
-  const [options, setOptions] = React.useState<readonly BusinessType[]>([]);
+  const [options, setOptions] = React.useState<readonly IdName[]>([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
 

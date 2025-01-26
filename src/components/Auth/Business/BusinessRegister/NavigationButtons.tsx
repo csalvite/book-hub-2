@@ -4,12 +4,14 @@ interface NavigationButtonsProps {
   currentStep: number;
   onNext: () => void;
   onBack: () => void;
+  onSubmit: () => void;
 }
 
 const NavigationButtons: React.FC<NavigationButtonsProps> = ({
   currentStep,
   onNext,
   onBack,
+  onSubmit,
 }) => {
   return (
     <div className='mt-8 flex justify-between'>
@@ -22,10 +24,10 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({
         </button>
       )}
       <button
-        onClick={onNext}
+        onClick={currentStep === 7 ? onSubmit : onNext}
         className='ml-auto px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors'
       >
-        {currentStep === 8 ? 'Submit' : 'Next'}
+        {currentStep === 7 ? 'Submit' : 'Next'}
       </button>
     </div>
   );

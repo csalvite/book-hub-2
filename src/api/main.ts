@@ -13,10 +13,14 @@ export async function get(endpoint = '') {
   }
 }
 
-export async function post(endpoint = '', formBody = '') {
+export async function post(endpoint = '', formBody: unknown = {}) {
   try {
     const url = `${VITE_API_URL}${endpoint}`;
-    const response = await axios.post(url, formBody);
+    const response = await axios.post(url, formBody, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
     return response;
   } catch (error) {

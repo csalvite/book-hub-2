@@ -11,7 +11,7 @@ const steps = [
   'Services',
   'Schedule',
   'Photos',
-  'Payment',
+  // 'Payment',
   'Terms',
 ];
 
