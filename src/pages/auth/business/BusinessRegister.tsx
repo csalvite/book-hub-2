@@ -4,6 +4,8 @@ import StepIndicator from '../../../components/Auth/Business/BusinessRegister/St
 import { BusinessFormSteps } from '../../../components/Auth/Business/BusinessRegister/Steps';
 import NavigationButtons from '../../../components/Auth/Business/BusinessRegister/NavigationButtons';
 import { LoadingState } from '../../../components/LoadingState';
+import { BusinessSuccess } from '../../../components/Auth/Business/BusinessSuccess';
+import { BusinessSuccessResponse } from '../../../types/business';
 
 const BusinessRegister: React.FC = () => {
   const {
@@ -17,13 +19,16 @@ const BusinessRegister: React.FC = () => {
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
+  const [businessSuccessData, setBusinessSuccessData] =
+    React.useState<BusinessSuccessResponse>();
 
   console.log('datos del registro de negocio', formData);
 
   const registerBusiness = async () => {
     try {
       setLoading(true);
-      await submitForm();
+      const response = await submitForm();
+      setBusinessSuccessData(response);
       setSuccess(true);
     } catch (error) {
       setError(true);
@@ -34,16 +39,12 @@ const BusinessRegister: React.FC = () => {
     }
   };
 
-  if (success) {
+  console.log('businessSuccessData', businessSuccessData);
+
+  if (success && businessSuccessData) {
     return (
-      <div className='min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-2xl mx-auto'>
-          <div className='bg-white p-8 rounded-lg shadow'>
-            <h2 className='text-2xl font-bold text-center'>
-              Business registered!
-            </h2>
-          </div>
-        </div>
+      <div className='min-h-screen bg-gray-100 p-6'>
+        <BusinessSuccess data={businessSuccessData} />
       </div>
     );
   }

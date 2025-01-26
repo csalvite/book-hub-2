@@ -54,6 +54,8 @@ export const useBusinessRegister = () => {
     if (!response) {
       throw new Error('Error al enviar el formulario');
     }
+
+    return response;
   };
 
   const goToPreviousStep = () => {

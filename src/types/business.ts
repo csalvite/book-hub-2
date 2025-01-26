@@ -43,45 +43,24 @@ export interface BusinessFormData {
   terms: boolean;
 }
 
+export interface BusinessSuccessResponse {
+  id: number;
+  businessName: string;
+  businessTypeId: number;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  country: string;
+  description: string;
+  ownerId: number;
+  createdAt: string;
+  openingHoursId: number;
+  imagesId: number;
+  locationId: number;
+}
+
 export interface IdName {
   id: number;
   name: string;
 }
-
-// {
-//     "business": {
-//         "name": "",
-//         "type": 0,
-//         "password": "",
-//         "owner": {
-//             "name": "",
-//             "mail": "",
-//             "phone": "",
-//             "prefix": ""
-//         }
-//     },
-//     "location": {
-//         "address": "",
-//         "addressNum": "",
-//         "city": "",
-//         "state": "",
-//         "zipCode": "",
-//         "country": "",
-//         "latitude": 0,
-//         "longitude": 0
-//     },
-//     "openingHours": {
-//         "monday": "",
-//         "tuesday": "",
-//         "wednesday": "",
-//         "thursday": "",
-//         "friday": "",
-//         "saturday": "",
-//         "sunday": ""
-//     },
-//     "services": [],
-//     "images": {
-//         "hero": "",
-//         "additionalImages": []
-//     }
-// }
