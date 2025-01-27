@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
                 Add Your Business!
               </Link>
               <Link
-                to='/login'
+                to='/business-login'
                 className='inline-block border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors text-center'
               >
                 Log In
