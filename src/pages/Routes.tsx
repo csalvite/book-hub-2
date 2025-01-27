@@ -5,7 +5,7 @@ import Register from './auth/users/Register';
 import ForBusiness from './auth/business/ForBusiness';
 import BusinessRegister from './auth/business/BusinessRegister';
 import BusinessLogin from './auth/business/BusinessLogin';
-import Dashboard from './dashboard';
+import Dashboard from './dashboard/Dashboard';
 
 function BookHubRoutes() {
   return (
