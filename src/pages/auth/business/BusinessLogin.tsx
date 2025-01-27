@@ -6,7 +6,9 @@ const BusinessLogin: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
+
+    // por ahora que redirija a la home
+    window.location.href = '/dashboard';
   };
 
   return (

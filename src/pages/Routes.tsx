@@ -5,6 +5,7 @@ import Register from './auth/users/Register';
 import ForBusiness from './auth/business/ForBusiness';
 import BusinessRegister from './auth/business/BusinessRegister';
 import BusinessLogin from './auth/business/BusinessLogin';
+import Dashboard from './dashboard';
 
 function BookHubRoutes() {
   return (
@@ -16,6 +17,7 @@ function BookHubRoutes() {
     >
       <Routes>
         <Route path='/*' element={<App />} />
+        <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/for-businesses' element={<ForBusiness />} />
