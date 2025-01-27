@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BusinessLogin: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const navigate = useNavigate(); // React Router
+  // const router = useRouter(); // Next.js
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // por ahora que redirija a la home
-    window.location.href = '/dashboard';
+    // Validaciones básicas de email/password (opcional)
+    if (!email || !password) {
+      alert('Please fill in both fields');
+      return;
+    }
+
+    // Redirigir al dashboard
+    navigate('/dashboard'); // react-router-dom
+    // router.push(routes.dashboard); // Next.js
   };
 
   return (
