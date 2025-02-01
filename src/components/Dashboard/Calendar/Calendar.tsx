@@ -3,8 +3,8 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { format } from 'date-fns';
 import { ReservationCalendarEvent } from '../../../types/reservation';
+import { SelectedEvent } from './SelectedEvent';
 
 interface CalendarProps {
   events: ReservationCalendarEvent[];
@@ -48,18 +48,19 @@ export default function Calendar({ events }: CalendarProps) {
             }}
             events={events}
             eventClick={handleEventClick}
-            slotMinTime='09:00:00'
-            slotMaxTime='20:00:00'
+            slotMinTime='08:00:00'
+            slotMaxTime='22:00:00'
             allDaySlot={false}
-            height='700px'
+            height='800px'
             eventClassNames={(arg) => {
               const status = (
                 arg.event.extendedProps as ReservationCalendarEvent
               ).status;
               return [
-                status === 'confirmed' && 'bg-green-500',
-                status === 'pending' && 'bg-yellow-500',
-                status === 'cancelled' && 'bg-red-500',
+                'cursor-pointer',
+                status === 'confirmed' && 'bg-green-500 hover:bg-green-600',
+                status === 'pending' && 'bg-yellow-500 hover:bg-yellow-600',
+                status === 'cancelled' && 'bg-red-500 hover:bg-red-600',
               ]
                 .filter(Boolean)
                 .join(' ');
@@ -69,79 +70,10 @@ export default function Calendar({ events }: CalendarProps) {
       </div>
 
       {selectedEvent && (
-        <div className='w-80 bg-white p-6 border-l border-gray-200'>
-          <h2 className='text-xl font-semibold mb-4'>Detalles de la Reserva</h2>
-          <div className='space-y-4'>
-            <div className='flex items-start gap-2'>
-              <i className='fa-regular fa-calendar w-5 h-5 text-gray-500 mt-1'></i>
-              <div>
-                <p className='font-medium'>{selectedEvent.title}</p>
-                <p className='text-sm text-gray-600'>
-                  {format(new Date(selectedEvent.start), 'dd/MM/yyyy')}
-                </p>
-              </div>
-            </div>
-
-            <div className='flex items-start gap-2'>
-              <i className='fa-solid fa-clock w-5 h-5 text-gray-500 mt-1'></i>
-              <div>
-                <p className='font-medium'>Horario</p>
-                <p className='text-sm text-gray-600'>
-                  {format(new Date(selectedEvent.start), 'HH:mm')} -
-                  {format(new Date(selectedEvent.end), 'HH:mm')}
-                </p>
-              </div>
-            </div>
-
-            <div className='flex items-start gap-2'>
-              <i className='fa-solid fa-user w-5 h-5 text-gray-500 mt-1'></i>
-              <div>
-                <p className='font-medium'>Cliente</p>
-                <p className='text-sm text-gray-600'>
-                  {selectedEvent.customerName}
-                </p>
-              </div>
-            </div>
-
-            <div className='flex items-start gap-2'>
-              <i className='fa-regular fa-envelope w-5 h-5 text-gray-500 mt-1'></i>
-              <div>
-                <p className='font-medium'>Email</p>
-                <p className='text-sm text-gray-600'>
-                  {selectedEvent.customerEmail}
-                </p>
-              </div>
-            </div>
-
-            {selectedEvent.description && (
-              <div className='border-t pt-4 mt-4'>
-                <p className='font-medium mb-1'>Notas</p>
-                <p className='text-sm text-gray-600'>
-                  {selectedEvent.description}
-                </p>
-              </div>
-            )}
-
-            <div className='border-t pt-4 mt-4'>
-              <p className='font-medium mb-2'>Estado</p>
-              <span
-                className={`px-3 py-1 rounded-full text-sm ${
-                  selectedEvent.status === 'confirmed'
-                    ? 'bg-green-100 text-green-800'
-                    : selectedEvent.status === 'pending'
-                    ? 'bg-yellow-100 text-yellow-800'
-                    : 'bg-red-100 text-red-800'
-                }`}
-              >
-                {selectedEvent.status === 'confirmed'
-                  ? 'Confirmado'
-                  : selectedEvent.status === 'pending'
-                  ? 'Pendiente'
-                  : 'Cancelado'}
-              </span>
-            </div>
-          </div>
-        </div>
+        <SelectedEvent
+          selectedEvent={selectedEvent}
+          setSelectedEvent={setSelectedEvent}
+        />
       )}
     </div>
   );
