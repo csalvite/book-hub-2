@@ -7,7 +7,6 @@ import {
   faMoneyBillTrendUp,
   faBagShopping,
   faMagnifyingGlass,
-  faBell,
   faUserCircle,
   faBars,
   faXmark,
@@ -15,6 +14,7 @@ import {
 import Calendar from '../../components/Dashboard/Calendar/Calendar';
 import { mockReservations } from '../../mocks/mockCalendar';
 import DashboardComponent from '../../components/Dashboard/Dashboard';
+import { NotificationBell } from '../../components/NotificationBell';
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -121,10 +121,7 @@ function Dashboard() {
                 </div>
               </div>
               <div className='flex items-center gap-4'>
-                <button className='relative p-2 text-gray-600 hover:text-blue-600'>
-                  <FontAwesomeIcon icon={faBell} className='w-6 h-6' />
-                  <span className='absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full'></span>
-                </button>
+                <NotificationBell />
                 <div className='flex items-center gap-2'>
                   <FontAwesomeIcon
                     icon={faUserCircle}
